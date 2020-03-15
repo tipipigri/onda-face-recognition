@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Onda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/StyleWip.css">
+  <link rel="stylesheet" type="text/css" href="css/Style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="font.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+let root = document.documentElement;
+
+root.addEventListener("mousemove", e => {
+  root.style.setProperty('--mousex', e.clientX + "px");
+  root.style.setProperty('--mousey', e.clientY + "px");
+});
+</script>
+<script>
+$(document).mousemove(function(e) {
+  var docX = $(document).width();
+  var docY = $(document).height();
+  var move = 1.3;
+
+  var mX = e.pageX;
+  var mY = (e.pageY - 400)*(-1);
+  document.getElementById("x").innerText = mX;
+  document.getElementById("y").innerText = mY;
+  $('#onda').css('font-variation-settings', "'wght'" + mX + ", 'ital'" + mY);
+});
+</script>
+<script>
+document.getElementById('panel').mousemove(function(e) {
+  var docX = $(document).width();
+  var docY = $(document).height();
+  var move = 1.3;
+
+  var mX = e.pageX;
+  var mY = (e.pageY - 400)*(-1);
+  document.getElementById("x").innerText = mX;
+  document.getElementById("y").innerText = mY;
+  $('#onda').css('font-variation-settings', "'wght'" + mX + ", 'ital'" + mY);
+});
+</script>
+
+<style>
+  @font-face {
+      font-family: 'onda';
+      src: url('AGOndaGX.ttf');
+  }
+  :root{
+    --mousex: 0;
+  }
+  #onda{
+    font-size: 300px;
+    font-family: onda;
+    font-variation-settings: 'wght' var(--mousex);
+  }
+
+  .mover {
+    width: 50px;
+    height: 50px;
+    background: red;
+    position: absolute;
+    left: var(--mousex);
+    top: var(--mousey);
+  }
+
+  #panel{
+    width: 300px;
+    height: 200px;
+    background-color: cyan;
+  }
+</style>
+
+
+<body>
+<div class="content-wrap" id="onda">
+  Albert ALBERT 
+</div>
+
+<canvas id="panel"></canvas>
+
+<div class="mover"></div>
+
+  <br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br>
+X: <div id="x"></div>
+Y: <div id="y"></div>
+
+</body>
+</html>
